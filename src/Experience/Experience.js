@@ -1,4 +1,5 @@
 import Sizes from './Utils/Sizes';
+import Time from './Time';
 
 export default class Experience {
   constructor(canvas) {
@@ -11,13 +12,14 @@ export default class Experience {
 
     // Setup
     this.sizes = new Sizes();
+    this.time = new Time();
 
     this.sizes.on('resize', () => {
-      this.resize()
-    })
+      this.resize();
+    });
   }
 
   resize() {
-    console.log('resize occured')
+    console.log('resize occured');
   }
 }
