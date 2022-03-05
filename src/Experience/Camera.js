@@ -35,4 +35,9 @@ export default class Camera {
     this.instance.aspect = this.sizes.width / this.sizes.height;
     this.instance.updateProjectionMatrix();
   }
+
+  update() {
+    // update the orbit controls on each frame
+    this.controls.update();
+  }
 }

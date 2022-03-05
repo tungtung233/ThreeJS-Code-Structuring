@@ -44,5 +44,7 @@ export default class Experience {
     this.camera.resize()
   }
 
-  update() {}
+  update() {
+    this.camera.update();
+  }
 }
