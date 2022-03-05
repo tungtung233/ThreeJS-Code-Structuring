@@ -40,7 +40,9 @@ export default class Experience {
     });
   }
 
-  resize() {}
+  resize() {
+    this.camera.resize()
+  }
 
   update() {}
 }
