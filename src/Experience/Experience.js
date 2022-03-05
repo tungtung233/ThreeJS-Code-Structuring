@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import Sizes from './Utils/Sizes';
 import Time from './Time';
 import Camera from './Camera';
+import Renderer from './Renderer';
 
 // this is the instance of the Experience
 let instance = null;
@@ -9,7 +10,7 @@ let instance = null;
 export default class Experience {
   constructor(canvas) {
     // this ensures that each time we try to create a new Experience, we are just returning the old Experience instead - we have turned the Experience class into a singleton
-    // The reason why we do this is so that the Camera class can have access to the same Experience each time 
+    // The reason why we do this is so that the Camera class can have access to the same Experience each time
     if (instance) {
       return instance;
     }
@@ -28,6 +29,7 @@ export default class Experience {
     this.time = new Time();
     this.scene = new THREE.Scene();
     this.camera = new Camera();
+    this.renderer = new Renderer();
 
     // Sizes resize event
     this.sizes.on('resize', () => {
@@ -41,7 +43,7 @@ export default class Experience {
   }
 
   resize() {
-    this.camera.resize()
+    this.camera.resize();
   }
 
   update() {
