@@ -17,4 +17,9 @@ export default class World {
       this.environment = new Environment(); // envMap has to be after all the other materials, since it will only update what has already been instantiated
     });
   }
+
+  update() {
+    if (this.fox)
+    this.fox.update()
+  }
 }
