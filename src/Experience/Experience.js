@@ -59,4 +59,37 @@ export default class Experience {
     this.world.update();
     this.renderer.update();
   }
+
+  // completely remove the entire experience
+  // e.g. you're switching to a different page and no longer need that particular experience, you should destroy it since leaving it is bad for performance
+  // you should also remove event listeners
+  destroy() {
+    // 'off' comes from EventEmitter - it will remove every listener on this event name
+    this.sizes.off('resize');
+    this.time.off('tick');
+
+    // traverse the whole scene and find everything we want to dispose of - we should dispose of geometries, materials, textures and specific things like controls (like orbitControls), passes etc.
+    this.scene.traverse((child) => {
+      if (child instanceof THREE.Mesh) {
+        child.geometry.dispose();
+
+        // loop through the material properties
+        for (const key in child.material) {
+          const value = child.material[key];
+
+          // test if there is a dispose function
+          if (value && typeof value.dispose === 'function') {
+            value.dispose();
+          }
+        }
+      }
+    });
+
+    this.camera.controls.dispose();
+    this.renderer.instance.dispose();
+
+    if (this.debug.active) {
+      this.debug.ui.destroy();
+    }
+  }
 }
