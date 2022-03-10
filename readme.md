@@ -1,4 +1,5 @@
-# Three.js Journey
+# Code Structuring - Three.js Journey
+This project was completed with the goal of understanding how to structure larger projects in ThreeJS.
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
